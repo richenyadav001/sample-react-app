@@ -92,7 +92,7 @@ const getProducts = async () => {
     await client.connect();
     const database = client.db("assignment");
     const products = database.collection("products");
-    const items = products.find();
+    const items = await products.find().toArray();
     console.log("Items", items);
     return items;
   } finally {
