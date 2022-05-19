@@ -1,9 +1,8 @@
 // login.test.js
 import "@testing-library/jest-dom/extend-expect";
-import { fireEvent, waitFor } from "@testing-library/react";
 import React from "react";
 import Login from "../../login/login.js";
-import { render } from "../utils/test.utils";
+import { fireEvent, render, waitFor } from "../utils/test.utils";
 
 describe("Login", () => {
   it("should show email validation", async () => {

@@ -37,7 +37,9 @@ function App() {
                   <button
                     className={isLogin ? "nav-link active" : "nav-link"}
                     id="tab-login"
-                    onClick={clickHandler(true)}
+                    onClick={() => {
+                      setIsLogin(true);
+                    }}
                   >
                     Login
                   </button>
@@ -46,7 +48,9 @@ function App() {
                   <button
                     className={isLogin ? "nav-link" : "nav-link active"}
                     id="tab-register"
-                    onClick={clickHandler(false)}
+                    onClick={() => {
+                      setIsLogin(false);
+                    }}
                   >
                     Register
                   </button>

@@ -5,8 +5,8 @@ import DocUpload from "../../register/docUpload";
 import { render } from "../utils/test.utils";
 
 describe("DocUpload", () => {
+  const { getByTestId, getByLabelText } = render(<DocUpload />);
   it("should show photo validation", async () => {
-    const { getByTestId, getByLabelText } = render(<DocUpload />);
     const input = getByLabelText("Photo Upload");
     fireEvent.blur(input);
     await waitFor(() => {

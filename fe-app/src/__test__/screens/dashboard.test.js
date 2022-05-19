@@ -1,11 +1,12 @@
-import { screen } from "@testing-library/react";
 import React from "react";
 import Dashboard from "../../dashboard/dashboard";
-import { render } from "../utils/test.utils";
+import { render, screen } from "../utils/test.utils";
 
-test("Clicks button to get products", () => {
+describe("Dashboard", () => {
   render(<Dashboard />);
-  const handleClick = jest.fn();
-  const buttonElement = screen.getByText(/Bank products/i);
-  expect(buttonElement).not.toBeDisabled();
+  test("Clicks button to get products", () => {
+    const handleClick = jest.fn();
+    const buttonElement = screen.getByText(/Bank products/i);
+    expect(buttonElement).not.toBeDisabled();
+  });
 });
