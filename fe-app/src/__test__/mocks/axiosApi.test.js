@@ -23,7 +23,7 @@ describe("Axios Api", () => {
     mock.reset();
   });
 
-  it("should check user-exists", async () => {
+  test("should check user-exists", async () => {
     mock.onAny().reply((config) => {
       const [method, url, ...response] = responses.shift();
       if (config.url === url && config.method.toUpperCase() === method)
@@ -42,7 +42,7 @@ describe("Axios Api", () => {
     expect(data).toEqual(true);
   });
 
-  it("should get products lists", async () => {
+  test("should get products lists", async () => {
     mock.onAny().reply((config) => {
       const [method, url, ...response] = responses.shift();
       if (config.url === url && config.method.toUpperCase() === method)
@@ -56,7 +56,7 @@ describe("Axios Api", () => {
     expect(data[0].items[0]).toEqual(expectedGetProductData);
   });
 
-  it("should login user", async () => {
+  test("should login user", async () => {
     mock.onAny().reply((config) => {
       const [method, url, ...response] = responses.shift();
       if (config.url === url && config.method.toUpperCase() === method)
@@ -72,5 +72,36 @@ describe("Axios Api", () => {
     );
     console.log(data);
     expect(data).toEqual(expectedLoginSuccessData);
+  });
+
+  test("should trigger error onError testing", async () => {
+    const res = AxiosApi.buildError("/login", 400, "Icorrect credentials");
+    expect(res.statusCode).toBe(400);
+  });
+
+  test("should trigger error onError testing", async () => {
+    const errorObj = {
+      response: {
+        status: 200,
+        data: { res: "ok" },
+        headers: { "content-type": "text/json" },
+        statusText: "Ok",
+      },
+    };
+    const res = AxiosApi.onError("/login", errorObj);
+    expect(res.statusCode).toBe(200);
+  });
+
+  test("should trigger success onSuccess testing", async () => {
+    const respObj = {
+      response: {
+        status: 200,
+        data: { res: "ok" },
+        headers: { "content-type": "text/json" },
+        statusText: "Ok",
+      },
+    };
+    const res = AxiosApi.onSuccess(respObj);
+    expect(res.statusCode).toBe(200);
   });
 });
