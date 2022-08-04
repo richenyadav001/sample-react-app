@@ -1,7 +1,7 @@
 import Api from "../../api/axios";
 import {
-  GET_PRODUCTS_ERROR,
-  GET_PRODUCTS_SUCCESS,
+    GET_PRODUCTS_ERROR,
+    GET_PRODUCTS_SUCCESS
 } from "../actionType/actionTypes";
 const AxiosApi = new Api();
 
@@ -33,3 +33,9 @@ export const getProductError = (data) => {
     payload: data,
   };
 };
+
+function helloWord(item) {
+    return 'Hello' + item;
+}
+
+helloWord('item');

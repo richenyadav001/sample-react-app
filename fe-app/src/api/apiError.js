@@ -8,4 +8,6 @@ export default class ApiError {
     this.statusCode = statusCode;
     this.statusMessage = statusMessage;
   }
+
+  // Hello Comments
 }

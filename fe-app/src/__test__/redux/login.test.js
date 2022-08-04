@@ -1,5 +1,5 @@
 const login = require("../../redux/actions/login");
-const loginReducer = require("../../redux/reducers/login");
+const loginReducer = require("../../redux/reducers/login").default;
 
 const {
   actualLoginSuccess,
@@ -20,7 +20,9 @@ const action = {
 
 describe("Test login actions", () => {
   test("login reducer", () => {
+    console.log("loginReducer", loginReducer);
     let result = loginReducer(initialstate, action);
+    console.log(result);
     expect(result).toBe({
       isAuthenticated: true,
       message: "Success",

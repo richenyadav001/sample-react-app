@@ -101,7 +101,8 @@ describe("Axios Api", () => {
         statusText: "Ok",
       },
     };
-    const res = AxiosApi.onSuccess(respObj);
-    expect(res.statusCode).toBe(200);
+    const data = AxiosApi.onSuccess(respObj.response);
+    console.log("Response of success", data);
+    expect(data.res).toBe("ok");
   });
 });
